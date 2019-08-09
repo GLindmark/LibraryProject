@@ -19,9 +19,27 @@ namespace ClassLibrary2 {
             var db = new AppEfdbContext();
             return db.Students.Find(id);
 
-            //    }
-
-            //    }
+        }
+        public bool UpdateStudent(Students s) {
+            var db = new AppEfdbContext();
+            var sDB = GetStudent(s.Id);
+            if (sDB == null) {
+                throw new Exception("Student annot be found!");
+            }
+            sDB.Firstname = s.Firstname;
+            sDB.Lastname = s.Lastname;
+            sDB.Gpa = s.Gpa;
+            sDB.Sat = s.Sat;
+            sDB.IsFulltime = s.IsFulltime;
+            sDB.MajorId = s.MajorId;
+            var major = db.Majors.Find(s.MajorId);
+            if(major == null) {
+                return false;
+            }
+            //db.Update<Students>(sDB);  This does the same as the line below
+            db.Students.Update(sDB);
+            db.SaveChanges();
+            return true;
 
         }
     }

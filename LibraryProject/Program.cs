@@ -10,40 +10,60 @@ namespace LibraryProject {
         static void Main(string[] args) {
 
             var live = new StudentLive(); //create an instance of the Library
-            var students = live.ListStudents();
-            foreach (var student in students) {
-                System.Console.WriteLine($"{student.Firstname} {student.Lastname} {student.Major?.Description}");
-                //the "?" allows for students with a major that is null
+            var jonsmith = live.GetStudent(222);
+            if(jonsmith == null) {
+                throw new Exception("Student Not Found!");
             }
-            var s5 = live.GetStudent(1);//if you put a find of "444", then you should get "Student not found"
-            if (s5 == null) {
-                Console.WriteLine("Student not found!");
+
+
+            jonsmith.Firstname = "John";
+            var success = live.UpdateStudent(jonsmith);
+
+
+            //var students = live.ListStudents();
+
+
+
+
+            //foreach (var student in students) {
+            //    System.Console.WriteLine($"{student.Firstname} {student.Lastname} {student.Major?.Description}");
+            //    //the "?" allows for students with a major that is null
+            //}
+            //var s5 = live.GetStudent(2);//if you put a find of "444", then you should get "Student not found"
+            //if (s5 == null) {
+            //    Console.WriteLine("Student not found!");
+
+            //}
+            //else {
+            //    Console.WriteLine($"S4: {s5.Firstname} {s5.Lastname}");
+
 
             }
-            else {
-                Console.WriteLine($"S4: {s5.Firstname} {s5.Lastname}");
 
 
-            }
-            //public Student GetStudent(int id) {
-            //    var s4 = Live.GetStudent(4);//if you put a find of "444", then you should get null
-            //    if (s4 == null) {
-            //        Console.WriteLine("Student not found!");
-
-            //    }
-            //    else {
-            //        Console.WriteLine($"S4: {s4.Firstname} {s4.Lastname}");// go through and change the Students to Student.
-
-
-            // public Student GetStudent(int id) {
-
-            //    }
-
-
-
-            //        }
-            //    }
-            //
-        }
+        
     }
+
 }
+
+
+//public Student GetStudent(int id) {
+//    var s4 = Live.GetStudent(4);//if you put a find of "444", then you should get null
+//    if (s4 == null) {
+//        Console.WriteLine("Student not found!");
+
+//    }
+//    else {
+//        Console.WriteLine($"S4: {s4.Firstname} {s4.Lastname}");// go through and change the Students to Student.
+
+
+// public Student GetStudent(int id) {
+
+//    }
+
+
+
+//        }
+//    }
+//
+
