@@ -10,14 +10,23 @@ namespace LibraryProject {
         static void Main(string[] args) {
 
             var live = new StudentLive(); //create an instance of the Library
-            var jonsmith = live.GetStudent(222);
-            if(jonsmith == null) {
-                throw new Exception("Student Not Found!");
-            }
+
+            var Carl = new Students
+            {
+                Id = 0, FirstName = "Carl", Lastname = "Spackler", Sat = 1200, Gpa = 2.5, MajorId = 5
+
+            };
+
+            var success = live.InsertStudent(Carl);
 
 
-            jonsmith.Firstname = "John";
-            var success = live.UpdateStudent(jonsmith);
+
+            //if(littledebbie == null) {
+            //    throw new Exception("Student Not Found!");
+            //}
+
+
+            ////littledebbie.Firstname = "John";
 
 
             //var students = live.ListStudents();

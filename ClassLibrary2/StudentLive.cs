@@ -20,26 +20,59 @@ namespace ClassLibrary2 {
             return db.Students.Find(id);
 
         }
-        public bool UpdateStudent(Students s) {
+
+        public bool InsertStudent(Students s) {
             var db = new AppEfdbContext();
-            var sDB = GetStudent(s.Id);
-            if (sDB == null) {
-                throw new Exception("Student annot be found!");
-            }
-            sDB.Firstname = s.Firstname;
-            sDB.Lastname = s.Lastname;
-            sDB.Gpa = s.Gpa;
-            sDB.Sat = s.Sat;
-            sDB.IsFulltime = s.IsFulltime;
-            sDB.MajorId = s.MajorId;
+
+            s.Id = 0;
             var major = db.Majors.Find(s.MajorId);
-            if(major == null) {
-                return false;
+            if (major == null)
+            {
+                throw new Exception("Major cannot be found!");
             }
-            //db.Update<Students>(sDB);  This does the same as the line below
-            db.Students.Update(sDB);
+            db.Students.Add(s);
             db.SaveChanges();
             return true;
+
+            //db.Update<Students>(sDB);  This does the same as the line below
+            //db.Students.Remove(sDB);
+            //db.SaveChanges();
+            //return true;
+            //var sDB = GetStudent(s.Id);
+            //if (sDB == null) {
+            //    throw new Exception("Student annot be found!");
+            //}
+            //sDB.Firstname = s.Firstname;
+            //sDB.Lastname = s.Lastname;
+            //sDB.Gpa = s.Gpa;
+            //sDB.Sat = s.Sat;
+            //sDB.IsFulltime = s.IsFulltime;
+            //sDB.MajorId = s.MajorId;
+            //var major = db.Majors.Find(s.MajorId);
+            //if (major == null) {
+            //    return false;
+            //}
+            ////db.Update<Students>(sDB);  This does the same as the line below
+            //public bool UpdateStudent(Students s) {
+            //var db = new AppEfdbContext();
+            //var sDB = GetStudent(s.Id);
+            //if (sDB == null) {
+            //    throw new Exception("Student annot be found!");
+            //}
+            //sDB.Firstname = s.Firstname;
+            //sDB.Lastname = s.Lastname;
+            //sDB.Gpa = s.Gpa;
+            //sDB.Sat = s.Sat;
+            //sDB.IsFulltime = s.IsFulltime;
+            //sDB.MajorId = s.MajorId;
+            //var major = db.Majors.Find(s.MajorId);
+            //if(major == null) {
+            //    return false;
+            //}
+            ////db.Update<Students>(sDB);  This does the same as the line below
+            //db.Students.Update(sDB);
+            //db.SaveChanges();
+            //return true;
 
         }
     }
