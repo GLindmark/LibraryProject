@@ -6,6 +6,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="microsoft.EntityFrameworkcore.design" Version="2.2.6" />
+    <PackageReference Include="microsoft.EntityFrameworkCore.sqlserver" Version="2.2.6" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\ClassLibrary2\ClassLibrary2.csproj" />
     <ProjectReference Include="..\GlennUtilities\GlennUtilities.csproj" />
   </ItemGroup>
