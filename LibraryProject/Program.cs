@@ -11,6 +11,8 @@ namespace LibraryProject {
 
             var about = StudentLive.About;//namespace of the library.variable
             Console.Print(about);
+
+
         }
     }
 }
